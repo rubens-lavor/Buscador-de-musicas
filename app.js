@@ -5,13 +5,12 @@ const prevAndNext = document.querySelector('#prev-and-next-container')
 
 const apiURL = `https://api.lyrics.ovh`
 
-const URL_CORS = `https://cors-anywhere.herokuapp.com`
+//const URL_CORS = `https://cors-anywhere.herokuapp.com`
 
 
 const getMoreSongs = async url => {
-    const response = await fetch(`${URL_CORS}/suggest/${url}`)
+    const response = await fetch(`https://cors-anywhere.herokuapp.com/${url}`)
     const data = await response.json()
-
     insertSongsIntoPage(data)
 }
 
@@ -37,6 +36,7 @@ const insertSongsIntoPage = songsInfo => {
 
 const fetchSongs = async term => {
     const response = await fetch(`${apiURL}/suggest/${term}`)
+    console.log(`${apiURL}/suggest/${term}`)
     const data = await response.json()
 
     insertSongsIntoPage(data)
